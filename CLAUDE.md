@@ -6,7 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **v0.1 prototype — runnable.** The choreographed pipeline, an Ollama streaming
 client, the five seed brain regions, and the Tkinter tri-pane / auto-focus UI are
-implemented and verified (a no-network unit test plus a live `gemma4:e2b` run). It's
+implemented and verified (no-network unit tests plus a live `gemma4:e2b` run). Runs
+can be chained into a conversation (the "Continue conversation" toggle re-injects the
+prior turn via `build_seed_context`), and the handover/final panes render basic
+markdown (`brain/mdtext.py`). It's
 still an early prototype: one linear pipeline, no orchestrator yet, and the
 Hippocampus is still an LLM prompt rather than real retrieval. Keep this file in sync
 as the code grows.
@@ -224,8 +227,8 @@ ollama pull gemma4:e2b
 # run the app
 python app.py
 
-# run the tests — no network or display needed (uses a fake streaming client)
-python tests/test_pipeline.py        # or: python -m pytest tests/ -q
+# run the tests — no network or display needed (fake client; pure functions)
+python -m pytest tests/ -q           # or a single file: python tests/test_pipeline.py
 ```
 
 No third-party runtime dependencies — standard library only (`tkinter`, `urllib`).
@@ -246,9 +249,11 @@ brain-emulation/
 │   ├── nodes.py            # Node dataclass + DEFAULT_PIPELINE (the 5 regions)
 │   ├── pipeline.py         # ChoreographedPipeline + PipelineEvent (UI-agnostic)
 │   ├── trace.py            # CognitiveTrace — the {Input, Trace, Final_Output} audit log
-│   └── ui.py               # Tkinter tri-pane tabs + auto-focus controller
+│   ├── mdtext.py           # pure markdown -> styled segments (no tkinter; testable)
+│   └── ui.py               # Tkinter tri-pane tabs, auto-focus, continue-convo, md render
 └── tests/
-    └── test_pipeline.py    # fake-client unit test: event flow, snowball, trace
+    ├── test_pipeline.py    # fake-client unit test: event flow, snowball, trace, history
+    └── test_mdtext.py      # markdown parser unit test
 ```
 
 `pipeline.py` emits `PipelineEvent`s and never imports Tkinter — the same event

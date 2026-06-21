@@ -8,6 +8,14 @@ PipelineEvents onto a thread-safe queue. The Tk main loop drains that queue via
 Auto-focus: while thinking, the view follows the active node and tab-switching is
 locked (clicks snap back). When the run finishes, the tabs unlock so you can browse
 the regions and audit the reasoning.
+
+Conversation: tick "Continue conversation" to feed the prior turn (original question
++ final answer) back into the next run, so follow-ups build on context instead of
+starting cold.
+
+Markdown: handover panes and the final response are rendered (bold/italic/code/
+headers/bullets) rather than shown as raw '**asterisks**'. The live "thinking" pane
+stays raw on purpose — it is the unedited token stream.
 """
 from __future__ import annotations
 
@@ -15,9 +23,10 @@ import queue
 import threading
 import tkinter as tk
 from tkinter import ttk
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 from . import config
+from . import mdtext
 from . import pipeline as P
 from .pipeline import ChoreographedPipeline, PipelineEvent
 
@@ -30,12 +39,14 @@ class BrainEmulationApp:
         self.is_thinking = False
         self.locked_index: Optional[int] = None
         self.last_trace = None
+        self.history: List[dict] = []        # [{"user":..., "assistant":...}, ...]
+        self._current_input = ""
         self.tabs: Dict[str, dict] = {}        # node.key -> {mid, right, name}
         self.index_by_key: Dict[str, int] = {}  # node.key -> tab index
 
         root.title("Brain Emulation — Cognitive Assembly Line")
-        root.geometry("1240x740")
-        root.minsize(960, 580)
+        root.geometry("1240x760")
+        root.minsize(960, 600)
         root.configure(bg=config.BG_DARK)
 
         self._build_styles()
@@ -86,11 +97,19 @@ class BrainEmulationApp:
 
         in_row = tk.Frame(self.root, bg=config.BG_DARK)
         in_row.pack(fill="x", padx=12, pady=(0, 4))
+        self.continue_var = tk.BooleanVar(value=False)
+        self.continue_chk = tk.Checkbutton(
+            in_row, text="🔗 Continue conversation", variable=self.continue_var,
+            bg=config.BG_DARK, fg=config.MUTED, selectcolor=config.PANEL_LEFT,
+            activebackground=config.BG_DARK, activeforeground=config.TEXT,
+            font=config.FONT_UI, relief="flat", highlightthickness=0, borderwidth=0,
+        )
+        self.continue_chk.pack(side="right", padx=(8, 0))
         self.input = tk.Entry(
             in_row, bg=config.PANEL_LEFT, fg=config.TEXT, insertbackground=config.TEXT,
             font=config.FONT_UI, relief="flat",
         )
-        self.input.pack(fill="x", ipady=7)
+        self.input.pack(side="left", fill="x", expand=True, ipady=7)
         self.input.insert(0, "My server crashed and I'm losing money!")
         self.input.bind("<Return>", lambda _e: self._on_run())
 
@@ -126,7 +145,7 @@ class BrainEmulationApp:
         self.notebook.pack(fill="both", expand=True)
         self.notebook.bind("<<NotebookTabChanged>>", self._on_tab_changed)
 
-        final = tk.Frame(right, bg=config.FINAL_BG, height=160)
+        final = tk.Frame(right, bg=config.FINAL_BG, height=170)
         final.pack(fill="x", pady=(10, 0))
         final.pack_propagate(False)
         tk.Label(
@@ -138,6 +157,7 @@ class BrainEmulationApp:
             font=config.FONT_MONO,
         )
         self.final.pack(fill="both", expand=True, padx=10, pady=(0, 8))
+        self._configure_md_tags(self.final)
         self.final.config(state="disabled")
 
     def _build_tabs(self) -> None:
@@ -157,6 +177,7 @@ class BrainEmulationApp:
             left.insert("1.0", f"{node.inspiration}\n\n{node.system}")
             left.config(state="disabled")
             mid.config(state="disabled")
+            self._configure_md_tags(right)
             right.config(state="disabled")
 
             self.tabs[node.key] = {"mid": mid, "right": right, "name": node.name}
@@ -170,6 +191,27 @@ class BrainEmulationApp:
         txt = tk.Text(wrap, bg=bg, fg=config.TEXT, wrap="word", borderwidth=0, font=config.FONT_MONO)
         txt.pack(fill="both", expand=True, padx=10, pady=(0, 10))
         return txt
+
+    # ---- markdown rendering ------------------------------------------------
+    def _configure_md_tags(self, w: tk.Text) -> None:
+        w.tag_configure("md_bold", font=("Consolas", 10, "bold"))
+        w.tag_configure("md_italic", font=("Consolas", 10, "italic"))
+        w.tag_configure("md_code", font=("Consolas", 10), background="#11151c", foreground="#9ad1ff")
+        w.tag_configure("md_h1", font=("Segoe UI", 14, "bold"), spacing1=8, spacing3=4)
+        w.tag_configure("md_h2", font=("Segoe UI", 12, "bold"), spacing1=6, spacing3=3)
+        w.tag_configure("md_h3", font=("Segoe UI", 11, "bold"), spacing1=5, spacing3=2)
+        w.tag_configure("md_bullet", foreground=config.SUCCESS, font=("Consolas", 10, "bold"))
+
+    def _render_md(self, w: tk.Text, md: str) -> None:
+        w.config(state="normal")
+        w.delete("1.0", tk.END)
+        for text, tags in mdtext.parse_markdown(md):
+            if tags:
+                w.insert(tk.END, text, tags)
+            else:
+                w.insert(tk.END, text)
+        w.see("1.0")
+        w.config(state="disabled")
 
     # ---- helpers -----------------------------------------------------------
     def _write(self, widget: tk.Text, text: str = "", append: bool = True, clear: bool = False) -> None:
@@ -187,20 +229,29 @@ class BrainEmulationApp:
         text = self.input.get().strip()
         if not text:
             return
+
+        use_history = self.continue_var.get() and bool(self.history)
+        if not use_history:
+            self.history = []  # fresh conversation
+        hist = list(self.history) if use_history else None
+
         self.is_thinking = True
+        self._current_input = text
         self.run_btn.config(state="disabled", text="Thinking…")
 
-        self._write(self.snowball, f"USER INPUT:\n{text}\n", append=False)
+        self._write(self.snowball, P.build_seed_context(text, hist), append=False)
         self._write(self.final, "", clear=True)
         for key, w in self.tabs.items():
             self._write(w["mid"], "", clear=True)
             self._write(w["right"], "", clear=True)
             self.notebook.tab(self.index_by_key[key], text=f"  {w['name']}  ")
 
-        threading.Thread(target=self._worker, args=(text,), daemon=True).start()
+        verb = "Continuing conversation" if use_history else "Thinking"
+        self.status.config(text=f"{verb} …", fg=config.LABEL_MID)
+        threading.Thread(target=self._worker, args=(text, hist), daemon=True).start()
 
-    def _worker(self, text: str) -> None:
-        self.last_trace = self.pipe.run(text, on_event=self.events.put)
+    def _worker(self, text: str, hist: Optional[List[dict]]) -> None:
+        self.last_trace = self.pipe.run(text, on_event=self.events.put, history=hist)
 
     # ---- event loop --------------------------------------------------------
     def _drain_events(self) -> None:
@@ -221,13 +272,14 @@ class BrainEmulationApp:
         elif ev.type == P.STREAM_CHUNK:
             self._write(self.tabs[ev.node_key]["mid"], ev.text, append=True)
         elif ev.type == P.NODE_COMPLETE:
-            self._write(self.tabs[ev.node_key]["right"], ev.text, append=False)
+            self._render_md(self.tabs[ev.node_key]["right"], ev.text)
             self.notebook.tab(self.index_by_key[ev.node_key], text=f"  ✓ {ev.node_name}  ")
             self._write(self.snowball, ev.context, append=False)
         elif ev.type == P.PIPELINE_COMPLETE:
-            self._write(self.final, ev.text, append=False)
+            self._render_md(self.final, ev.text)
+            self.history.append({"user": self._current_input, "assistant": ev.text})
             self.status.config(
-                text="Done — tabs unlocked. Browse the regions to audit the reasoning.",
+                text="Done — tabs unlocked. Tick '🔗 Continue conversation' to reply in context.",
                 fg=config.SUCCESS,
             )
             self._finish()

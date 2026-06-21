@@ -18,6 +18,7 @@ from brain.pipeline import (  # noqa: E402
     PIPELINE_COMPLETE,
     STREAM_CHUNK,
     ChoreographedPipeline,
+    build_seed_context,
 )
 
 
@@ -91,7 +92,28 @@ def test_pipeline_stops_on_error():
     assert trace.final_output == ""
 
 
+def test_continue_conversation_includes_history():
+    seed = build_seed_context(
+        "and now?", history=[{"user": "server down", "assistant": "try a restart"}]
+    )
+    assert "CONVERSATION SO FAR" in seed
+    assert "server down" in seed and "try a restart" in seed
+    assert "and now?" in seed
+
+    client = FakeClient(["a", "b", "c", "d", "e"])
+    ChoreographedPipeline(client).run(
+        "follow-up question",
+        on_event=lambda _e: None,
+        history=[{"user": "orig q", "assistant": "orig answer"}],
+    )
+    # the first region must have seen the prior turn plus the new message
+    assert "orig q" in client.prompts[0]
+    assert "orig answer" in client.prompts[0]
+    assert "follow-up question" in client.prompts[0]
+
+
 if __name__ == "__main__":
     test_pipeline_emits_events_and_grows_context()
     test_pipeline_stops_on_error()
+    test_continue_conversation_includes_history()
     print("OK — all pipeline smoke tests passed.")

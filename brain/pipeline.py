@@ -38,15 +38,44 @@ class PipelineEvent:
 EventHandler = Callable[[PipelineEvent], None]
 
 
+def build_seed_context(user_input: str, history: Optional[List[dict]] = None) -> str:
+    """Build the first region's initial context.
+
+    With no history this is just the user's message. With history (a list of
+    ``{"user", "assistant"}`` turns) it prepends the conversation so a follow-up
+    run continues in context instead of starting cold.
+    """
+    history = history or []
+    if not history:
+        return f"USER INPUT:\n{user_input.strip()}\n"
+    lines = ["CONVERSATION SO FAR:"]
+    for turn in history:
+        lines.append(f"  User: {turn['user']}")
+        lines.append(f"  Assistant: {turn['assistant']}")
+    lines.append("")
+    lines.append(f"USER'S NEW MESSAGE:\n{user_input.strip()}")
+    return "\n".join(lines) + "\n"
+
+
 class ChoreographedPipeline:
     def __init__(self, client: OllamaClient, nodes: Optional[List[Node]] = None) -> None:
         self.client = client
         self.nodes = nodes if nodes is not None else DEFAULT_PIPELINE
 
-    def run(self, user_input: str, on_event: EventHandler) -> CognitiveTrace:
-        """Run the full chain. Blocking — call from a worker thread in a GUI."""
+    def run(
+        self,
+        user_input: str,
+        on_event: EventHandler,
+        history: Optional[List[dict]] = None,
+    ) -> CognitiveTrace:
+        """Run the full chain. Blocking — call from a worker thread in a GUI.
+
+        Pass ``history`` (a list of ``{"user", "assistant"}`` turns) to continue a
+        conversation: the prior turns are folded into the first region's input so
+        the chain reasons with the original question and its earlier answer in view.
+        """
         trace = CognitiveTrace(user_input=user_input)
-        context = f"USER INPUT:\n{user_input.strip()}\n"
+        context = build_seed_context(user_input, history)
         output = ""
 
         for node in self.nodes:
