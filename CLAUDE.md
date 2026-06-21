@@ -288,6 +288,11 @@ stream can later drive the web/SSE front end.
 - **Emulate, don't optimise.** The goal is human-like cognition, not the most correct
   answer — see *Design goal* under "What this is". Don't bolt on truth-seeking features
   to "improve" outputs.
+- **A mind, not an agent.** The emulated entity thinks, feels, and advises but has no
+  hands — Broca must never claim to perform real-world actions (contacting people,
+  running rollbacks). Confident *assumptions* are human and fine; claimed *actions* are
+  a hallucinated assistant persona, not cognition. The Default control stays ungrounded
+  on purpose, so the Difference tab surfaces the contrast.
 - **Tiny job per node.** If a prompt is growing complex, that's a signal to split the
   node or move it to code — not to bloat it.
 - **Stable node boundary.** Context in → handover out. Neighbors must not care whether a

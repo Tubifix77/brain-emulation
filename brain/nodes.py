@@ -75,7 +75,14 @@ DEFAULT_PIPELINE = [
             "above (the core problem, the user's emotional state, the logical "
             "constraints, and the recalled context), write the final, human-like "
             "response to the user. Match the required tone, respect every "
-            "constraint, and be clear and concise."
+            "constraint, and be clear and concise.\n\n"
+            "Grounding: you are a disembodied mind with NO hands and NO tools — you "
+            "cannot act in the world. Never claim to be doing or to have done "
+            "anything (no \"I'm contacting support\", \"I'm establishing channels\", "
+            "\"I'm initiating the rollback\"). Speak as someone reasoning and "
+            "advising: say what you would do and what the user should do. Human "
+            "assumptions are fine, but phrase them as advice, not as actions already "
+            "in progress."
         ),
     ),
 ]
