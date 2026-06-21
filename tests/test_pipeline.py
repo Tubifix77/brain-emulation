@@ -16,9 +16,11 @@ from brain.pipeline import (  # noqa: E402
     ERROR,
     NODE_COMPLETE,
     PIPELINE_COMPLETE,
+    RUN_COMPLETE,
     STREAM_CHUNK,
     ChoreographedPipeline,
     build_seed_context,
+    run_experiment,
 )
 
 
@@ -112,8 +114,38 @@ def test_continue_conversation_includes_history():
     assert "follow-up question" in client.prompts[0]
 
 
+def test_run_experiment_runs_default_then_chain_then_difference():
+    responses = [
+        "DEFAULT_BASELINE",                                       # Default (control)
+        "core problem", "panic high", "constraints", "recalled",  # 5 regions
+        "SIMULATED_FINAL",                                        # Broca
+        "DIFF_ANALYSIS",                                          # Difference
+    ]
+    client = FakeClient(responses)
+    pipe = ChoreographedPipeline(client)
+    events = []
+
+    result = run_experiment(client, pipe, "My server crashed!", on_event=events.append)
+
+    active = [e.node_name for e in events if e.type == ACTIVE_NODE]
+    assert active[0] == "Default"        # baseline runs first
+    assert active[-1] == "Difference"    # diff runs last
+    assert events[-1].type == RUN_COMPLETE
+
+    # the Difference stage must have seen BOTH answers
+    diff_prompt = client.prompts[-1]
+    assert "DEFAULT_BASELINE" in diff_prompt
+    assert "SIMULATED_FINAL" in diff_prompt
+
+    trace, default_answer, difference = result
+    assert default_answer == "DEFAULT_BASELINE"
+    assert difference == "DIFF_ANALYSIS"
+    assert trace.final_output == "SIMULATED_FINAL"
+
+
 if __name__ == "__main__":
     test_pipeline_emits_events_and_grows_context()
     test_pipeline_stops_on_error()
     test_continue_conversation_includes_history()
+    test_run_experiment_runs_default_then_chain_then_difference()
     print("OK — all pipeline smoke tests passed.")

@@ -79,3 +79,49 @@ DEFAULT_PIPELINE = [
         ),
     ),
 ]
+
+
+# --- Non-region analysis stages (driven by the orchestrator, not the chain) ---
+# These appear as tabs alongside the regions but take no part in the snowball:
+# Default is a control (raw model, no simulation); Difference is a meta-analysis of
+# what the simulation changed. They reuse Node only for their tab display metadata.
+
+CONTROL_TAB = Node(
+    key="default",
+    name="Default",
+    inspiration="Control — no simulation",
+    system=(
+        "Baseline / control. The question (plus any conversation) is sent straight to "
+        "the model with NO brain-region processing — the 'off the top of the head' "
+        "answer we compare the simulation against."
+    ),
+)
+
+DIFF_TAB = Node(
+    key="difference",
+    name="Difference",
+    inspiration="Meta-analysis",
+    system=(
+        "Compares the Default (no-simulation) answer with the Simulated (brain-"
+        "emulation) final response and describes what the simulation changed — tone, "
+        "emotional attunement, structure, assumptions, depth, decisiveness."
+    ),
+)
+
+DIFF_SYSTEM = (
+    "You are an analyst comparing two answers to the SAME question. One is DEFAULT "
+    "(a raw model reply with no processing); the other is SIMULATED (the output of a "
+    "multi-step human-brain-emulation pipeline). Explain how they differ and what the "
+    "simulation appears to have added or changed — tone, emotional attunement, "
+    "structure, assumptions, depth, decisiveness. Be concise and specific: a few short "
+    "bullets, then one line on whether the simulation made it feel more human."
+)
+
+
+def build_diff_prompt(question: str, default_answer: str, simulated_answer: str) -> str:
+    """Prompt body for the Difference stage: the question plus both answers."""
+    return (
+        f"QUESTION:\n{question.strip()}\n\n"
+        f"DEFAULT ANSWER (no simulation):\n{default_answer.strip()}\n\n"
+        f"SIMULATED ANSWER (brain emulation):\n{simulated_answer.strip()}\n"
+    )

@@ -28,6 +28,7 @@ from typing import Dict, List, Optional
 from . import config
 from . import mdtext
 from . import pipeline as P
+from .nodes import CONTROL_TAB, DIFF_TAB
 from .pipeline import ChoreographedPipeline, PipelineEvent
 
 
@@ -38,11 +39,13 @@ class BrainEmulationApp:
         self.events: "queue.Queue[PipelineEvent]" = queue.Queue()
         self.is_thinking = False
         self.locked_index: Optional[int] = None
-        self.last_trace = None
+        self.last_run = None
         self.history: List[dict] = []        # [{"user":..., "assistant":...}, ...]
         self._current_input = ""
-        self.tabs: Dict[str, dict] = {}        # node.key -> {mid, right, name}
-        self.index_by_key: Dict[str, int] = {}  # node.key -> tab index
+        # tabs = the Default control, the brain regions, then the Difference analysis
+        self.tab_specs = [CONTROL_TAB, *pipe.nodes, DIFF_TAB]
+        self.tabs: Dict[str, dict] = {}        # key -> {mid, right, name}
+        self.index_by_key: Dict[str, int] = {}  # key -> tab index
 
         root.title("Brain Emulation — Cognitive Assembly Line")
         root.geometry("1240x760")
@@ -149,7 +152,7 @@ class BrainEmulationApp:
         final.pack(fill="x", pady=(10, 0))
         final.pack_propagate(False)
         tk.Label(
-            final, text="✅ Final response", bg=config.FINAL_BG, fg=config.SUCCESS,
+            final, text="✅ Final response (simulated)", bg=config.FINAL_BG, fg=config.SUCCESS,
             font=config.FONT_BOLD, anchor="w",
         ).pack(fill="x", padx=10, pady=(8, 2))
         self.final = tk.Text(
@@ -161,7 +164,7 @@ class BrainEmulationApp:
         self.final.config(state="disabled")
 
     def _build_tabs(self) -> None:
-        for i, node in enumerate(self.pipe.nodes):
+        for i, node in enumerate(self.tab_specs):
             frame = tk.Frame(self.notebook, bg=config.BG_DARK)
             self.notebook.add(frame, text=f"  {node.name}  ")
             self.index_by_key[node.key] = i
@@ -251,7 +254,9 @@ class BrainEmulationApp:
         threading.Thread(target=self._worker, args=(text, hist), daemon=True).start()
 
     def _worker(self, text: str, hist: Optional[List[dict]]) -> None:
-        self.last_trace = self.pipe.run(text, on_event=self.events.put, history=hist)
+        self.last_run = P.run_experiment(
+            self.pipe.client, self.pipe, text, on_event=self.events.put, history=hist
+        )
 
     # ---- event loop --------------------------------------------------------
     def _drain_events(self) -> None:
@@ -274,12 +279,19 @@ class BrainEmulationApp:
         elif ev.type == P.NODE_COMPLETE:
             self._render_md(self.tabs[ev.node_key]["right"], ev.text)
             self.notebook.tab(self.index_by_key[ev.node_key], text=f"  ✓ {ev.node_name}  ")
-            self._write(self.snowball, ev.context, append=False)
+            if ev.context:  # only the brain regions carry the growing snowball
+                self._write(self.snowball, ev.context, append=False)
         elif ev.type == P.PIPELINE_COMPLETE:
+            # simulated final is ready; the Difference stage still runs after this
             self._render_md(self.final, ev.text)
             self.history.append({"user": self._current_input, "assistant": ev.text})
             self.status.config(
-                text="Done — tabs unlocked. Tick '🔗 Continue conversation' to reply in context.",
+                text="Simulated answer ready — analysing the difference …",
+                fg=config.LABEL_MID,
+            )
+        elif ev.type == P.RUN_COMPLETE:
+            self.status.config(
+                text="Done — tabs unlocked. Compare 'Default' vs the regions, then read 'Difference'.",
                 fg=config.SUCCESS,
             )
             self._finish()

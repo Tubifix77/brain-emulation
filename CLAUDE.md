@@ -167,6 +167,20 @@ waiting for input, you can browse the tabs.
 - A left sidebar tracks the **evolving global state**: the input prompt plus the
   accumulated-context "snowball" growing as each node finishes.
 
+### Baseline + difference tabs
+
+Two control/analysis stages run as their own tabs alongside the five regions (driven by
+`run_experiment` in `pipeline.py`, not by the choreographed chain):
+
+- **Default** — the raw model's answer to the same input with *no* simulation (no system
+  prompt, no snowball): the "off the top of the head" control to compare against.
+- **Difference** — feeds the question + the Default answer + the simulated Final response
+  back to the model and asks what the simulation changed.
+
+Order is Default → regions → Difference, ending in a `RUN_COMPLETE` event. (The regions'
+`PIPELINE_COMPLETE` now just means "simulated final ready", not "UI done".) These two
+stages are not brain regions and never enter the snowball.
+
 ## Tech stack & runtime
 
 - **Language:** Python.
