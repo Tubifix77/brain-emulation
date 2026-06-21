@@ -4,11 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-**Greenfield — no implementation exists yet.** This file captures the design intent
-from the founding design conversation so the first implementation can begin
-immediately. Treat the sections below as the spec to *build toward*, not a
-description of existing code. As real code lands, replace the "planned" notes with
-the actual commands, paths, and module names.
+**v0.1 prototype — runnable.** The choreographed pipeline, an Ollama streaming
+client, the five seed brain regions, and the Tkinter tri-pane / auto-focus UI are
+implemented and verified (a no-network unit test plus a live `gemma4:e2b` run). It's
+still an early prototype: one linear pipeline, no orchestrator yet, and the
+Hippocampus is still an LLM prompt rather than real retrieval. Keep this file in sync
+as the code grows.
 
 ## What this is
 
@@ -193,6 +194,11 @@ Candidate models (all fit the 3080):
 | **Phi-3.5 Mini 3.8B** | Punches above its weight; 128k native context, tiny base = max context headroom | ~2.2 GB | `ollama run phi3.5` |
 | **Mistral 7B v0.3** | Sliding-window attention, efficient sequential handoff; 32k native | ~4.1 GB | `ollama run mistral` |
 
+**v0.1 actually runs `gemma4:e2b`** (set in `brain/config.py`) — a brand-new small,
+efficient Gemma already pulled on this machine; quick and good enough for prototype
+testing. The table above is for scaling up later. (The "e" in `e2b` is part of the
+model name, not a typo.)
+
 ### Critical gotcha: override `num_ctx`
 
 Ollama defaults `num_ctx` to ~2048–4096 tokens. The snowballing context **will** exceed
@@ -208,36 +214,45 @@ resp = requests.post("http://localhost:11434/api/generate", json={
 })
 ```
 
-## Planned commands
-
-No build/test tooling exists yet. Intended setup once code lands (update this once the
-entry point and test runner are chosen):
+## Commands
 
 ```bash
-# one-time: pull a model
-ollama pull llama3.1            # or phi3.5 / mistral
+# one-time: start Ollama and pull the model (exact tag lives in brain/config.py)
+ollama serve
+ollama pull gemma4:e2b
 
-# run the Tkinter app (planned entry point — adjust to actual file)
+# run the app
 python app.py
+
+# run the tests — no network or display needed (uses a fake streaming client)
+python tests/test_pipeline.py        # or: python -m pytest tests/ -q
 ```
 
-When adding tests, prefer `pytest` and document here how to run the full suite and a
-single test.
+No third-party runtime dependencies — standard library only (`tkinter`, `urllib`).
+`pytest` is optional; the test file also runs standalone.
 
-## Planned project structure
+## Project structure
 
-A lean layout that keeps each concern swappable (especially so any node can flip
-between an LLM prompt and plain code per the diagnostic principle):
+A single `brain/` package. The node boundary (context in → handover out) is the key
+seam: it stays stable so any region can flip between an LLM prompt and plain code per
+the diagnostic principle.
 
 ```
 brain-emulation/
-├── app.py                 # Tkinter entry point
-├── nodes/                 # one config per brain region: prompt, model, num_ctx
-├── pipeline/              # choreographed runner (+ later: orchestrator/router)
-├── llm/                   # Ollama client wrapper (owns num_ctx handling)
-├── trace/                 # cognitive-trace logging
-└── ui/                    # notebook, tri-pane tab widgets, auto-focus controller
+├── app.py                  # entry point: wires client + pipeline + UI, launches Tk
+├── brain/
+│   ├── config.py           # model, num_ctx, Ollama host, UI palette
+│   ├── ollama_client.py    # streaming HTTP client; owns the num_ctx override
+│   ├── nodes.py            # Node dataclass + DEFAULT_PIPELINE (the 5 regions)
+│   ├── pipeline.py         # ChoreographedPipeline + PipelineEvent (UI-agnostic)
+│   ├── trace.py            # CognitiveTrace — the {Input, Trace, Final_Output} audit log
+│   └── ui.py               # Tkinter tri-pane tabs + auto-focus controller
+└── tests/
+    └── test_pipeline.py    # fake-client unit test: event flow, snowball, trace
 ```
+
+`pipeline.py` emits `PipelineEvent`s and never imports Tkinter — the same event
+stream can later drive the web/SSE front end.
 
 ## Design principles to preserve
 

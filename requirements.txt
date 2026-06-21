@@ -1,0 +1,11 @@
+# Brain Emulation v0.1 has NO third-party runtime dependencies.
+# The app uses only the Python standard library:
+#   - tkinter   (the UI; bundled with the python.org Windows installer)
+#   - urllib    (HTTP calls to the local Ollama server)
+#
+# External requirement: Ollama running locally with the configured model pulled.
+#   ollama serve
+#   ollama pull gemma4:e2b
+#
+# Optional, only for running the test suite:
+# pytest
