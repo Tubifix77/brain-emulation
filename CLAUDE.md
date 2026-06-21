@@ -27,6 +27,16 @@ The design bet: you don't need one large model doing heavy lifting. You need man
 tiny, explicit steps plus clean context handoff. This makes the AI's "thinking" a
 transparent, debuggable modular line instead of a black box.
 
+**Design goal — fidelity, not correctness.** The aim is to *emulate human cognition*,
+not to maximise answer quality. A non-specialist human answers off the top of their
+head — making assumptions, skipping clarifying questions, sometimes plain wrong — and
+that is exactly what the chain should do. It's a feature, not a bug to fix. So resist
+the reflex to bolt on truth-seeking machinery (web search, claim-verification,
+RAG-for-accuracy) to make answers "better"; that's a different project. Swapping a node
+to code is still fair when it emulates a region's *function* (e.g. the Hippocampus
+becoming real memory retrieval) — but never as a fact-checker on the output. Success is
+how human-like the *process and conclusion* feel, not whether the answer is optimal.
+
 Two parts matter, roughly equally:
 
 1. **The pipeline** — the brain-region processing chain (below).
@@ -261,6 +271,9 @@ stream can later drive the web/SSE front end.
 
 ## Design principles to preserve
 
+- **Emulate, don't optimise.** The goal is human-like cognition, not the most correct
+  answer — see *Design goal* under "What this is". Don't bolt on truth-seeking features
+  to "improve" outputs.
 - **Tiny job per node.** If a prompt is growing complex, that's a signal to split the
   node or move it to code — not to bloat it.
 - **Stable node boundary.** Context in → handover out. Neighbors must not care whether a
