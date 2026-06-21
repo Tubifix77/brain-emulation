@@ -21,3 +21,6 @@ ENV/
 Thumbs.db
 .idea/
 .vscode/
+
+# Experiment run outputs (reproducible; keep the harness, not the transcripts)
+experiments/results/
