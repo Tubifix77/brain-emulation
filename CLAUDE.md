@@ -275,9 +275,15 @@ brain-emulation/
 │   ├── trace.py            # CognitiveTrace — the {Input, Trace, Final_Output} audit log
 │   ├── mdtext.py           # pure markdown -> styled segments (no tkinter; testable)
 │   └── ui.py               # Tkinter tri-pane tabs, auto-focus, continue-convo, md render
+├── experiments/            # the "MVP diagnostic" as a tool: compare configs over N runs
+│   ├── harness.py          # run_experiment(conditions x prompts x N) + pluggable detectors
+│   ├── detectors.py        # pure agency + register detectors (unit-tested)
+│   ├── variants.py         # speculative node variants (NOT shipped in the app)
+│   └── run_*.py            # defined experiments (run_self_model, run_register)
 └── tests/
     ├── test_pipeline.py    # fake-client unit test: event flow, snowball, trace, history
-    └── test_mdtext.py      # markdown parser unit test
+    ├── test_mdtext.py      # markdown parser unit test
+    └── test_detectors.py   # agency + register detector tests
 ```
 
 `pipeline.py` emits `PipelineEvent`s and never imports Tkinter — the same event
@@ -293,6 +299,11 @@ stream can later drive the web/SSE front end.
   running rollbacks). Confident *assumptions* are human and fine; claimed *actions* are
   a hallucinated assistant persona, not cognition. The Default control stays ungrounded
   on purpose, so the Difference tab surfaces the contrast.
+- **Speak, don't proceduralise.** Broca is a *voice*: it talks TO the user in natural,
+  conversational, second-person prose — never a numbered "Step 1 / Phase 2" runbook or
+  "incident response protocol" SOP. The call-center register is the LLM's default
+  helpdesk persona; an experiment (`experiments/run_register.py`, N=15) showed a
+  conversational Broca cuts it from ~33–53% to 0% with no agency cost.
 - **Tiny job per node.** If a prompt is growing complex, that's a signal to split the
   node or move it to code — not to bloat it.
 - **Stable node boundary.** Context in → handover out. Neighbors must not care whether a
