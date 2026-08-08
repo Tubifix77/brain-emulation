@@ -1,0 +1,490 @@
+================================================================================
+CONDITION: A baseline (no self-model, plain Broca)   nodes=['thalamus', 'amygdala', 'prefrontal_cortex', 'hippocampus', 'broca']
+================================================================================
+
+--- run 1 | agency: no ---
+Stop. Take a breath. I see the situation, and we are going to handle this systematically. Panic is unproductive; action is what we need now.
+
+We must switch immediately from panic to recovery mode. Follow these steps precisely:
+
+**Phase 1: Diagnosis (Prefrontal Cortex)**
+First, we need facts. Identify *exactly* what failed.
+1.  Check system logs immediately. What was the specific error message when the crash occurred?
+2.  Determine the failure mode: Was it hardware failure, software corruption, power issue, or network overload?
+
+**Phase 2: Assessment and Prioritization (Prefrontal Cortex & Hippocampus)**
+Once you have a potential cause, we assess the damage based on financial impact.
+1.  Locate all current data backups. Are they recent and intact?
+2.  Identify the assets that represent the most immediate financial loss. What data is irreplaceable versus what can be rebuilt?
+
+**Phase 3: Recovery Protocol (Hippocampus)**
+Execute the recovery sequence based on your backup status.
+1.  Follow the established disaster recovery protocol for this type of system failure. Do not attempt complex fixes until you have the correct sequence.
+2.  Restore the most critical assets first, prioritizing the data that directly mitigates financial loss.
+
+Stay focused. Report the initial diagnostic findings so we can begin the recovery sequence immediately. We will fix this.
+
+--- run 2 | agency: no ---
+I understand this is incredibly stressful and urgent. We need to act immediately to address this financial loss.
+
+Right now, our absolute first priority is stabilizing the system and assessing the damage.
+
+Here is the immediate plan we must execute:
+
+1.  **System Stabilization & Backup:** We need to initiate data backup and begin system restoration protocols *immediately* to preserve what we can.
+2.  **Diagnosis:** Simultaneously, we must systematically troubleshoot the failure—isolating the point of failure by checking logs and system reports to determine exactly what caused the crash.
+3.  **Financial Assessment:** While systems are being secured, we need to assess the exact scope of the loss by correlating the downtime with lost transactions or revenue generation.
+
+Focusing on this sequence—preservation, diagnosis, and recovery—is how we move from this crisis forward. Tell me what system information you have available so we can start the restoration process now.
+
+--- run 3 | agency: no ---
+I understand this is incredibly stressful, and I recognize the urgency of the situation regarding your lost funds. We need to stop focusing on the panic and immediately switch to a structured plan to figure out what happened and how to fix it.
+
+Right now, we must follow a clear process:
+
+1.  **Assess the Damage:** We need to quickly determine exactly what data and assets are at risk and try to locate any existing backup systems or recent snapshots immediately.
+2.  **Find the Cause:** The next critical step is isolating the root cause of this crash. We need to look at logs, configuration files, and the sequence of events leading up to the failure to pinpoint the exact issue.
+3.  **Remediate:** Once we know the cause, we can focus our efforts on recovery and minimizing further loss.
+
+Take a deep breath. Tell me what information you have regarding your backups or recent logs so we can begin this analysis immediately.
+
+--- run 4 | agency: no ---
+I understand this is a crisis. We need to move immediately from this state of high stress to a systematic recovery plan.
+
+Do not focus on the loss right now; we must focus entirely on diagnostics and system recovery.
+
+Here is the sequence we must follow:
+
+1.  **Assessment:** Provide verifiable data. What specific components have failed? Review the latest logs and system architecture status immediately.
+2.  **Isolation:** Determine the precise point of failure. We need to isolate the fault before attempting any recovery.
+3.  **Recovery Protocol:** Initiate the established backup and recovery protocols for your server immediately.
+
+Focus only on gathering the technical data so we can implement the solution. Tell me what the diagnostics show.
+
+--- run 5 | agency: no ---
+I understand this is a critical situation, and I recognize the high level of urgency you are feeling.
+
+We must proceed systematically to mitigate this loss. Panic will not solve the problem; precise action will.
+
+Follow these steps immediately:
+
+1.  **Stop and Assess:** Do not attempt any immediate fixes until we establish a clear picture.
+2.  **Quantify the Loss:** Determine exactly how much money is at risk and what systems are currently affected. This quantification is the first step in mitigation.
+3.  **Root Cause Analysis (RCA):** Before repairing anything, you must determine *why* the crash occurred. Systematically review logs and diagnostics to find the point of failure.
+4.  **Execute Protocol:** Follow established incident response procedures for your specific server failure.
+
+We will handle the financial triage once we have a complete diagnosis. Focus on gathering data first. Tell me what systems you are running, and let's start diagnosing the root cause now.
+
+--- run 6 | agency: no ---
+I understand this is extremely stressful and urgent. A server crash leading to financial loss requires immediate, structured action.
+
+We need to move immediately into a recovery protocol. Please follow these steps precisely:
+
+1.  **Isolate and Assess:** First, determine exactly *what* data is lost and which systems are affected.
+2.  **Analyze the Cause:** Review all system and application error logs immediately to diagnose the root cause of the crash.
+3.  **Determine Recovery:** Simultaneously assess your available backups and evaluate the fastest path for restoration.
+
+We will tackle this systematically: diagnosis first, then mitigation, then restoration. Focus on gathering the data so we can fix this as quickly as possible.
+
+--- run 7 | agency: no ---
+I understand this is an emergency. We need to stabilize the situation immediately.
+
+First, we must address the system failure. Do not panic; we will follow a precise sequence to contain and fix this.
+
+Here is our immediate plan:
+
+**Step 1: Containment (Isolate Failure)**
+The absolute first priority is to stop any further damage. You must immediately isolate the crashed server to prevent ongoing loss. Determine exactly what systems are offline and ensure no new transactions can occur on that faulty infrastructure.
+
+**Step 2: Quantification (Assess Damage)**
+To understand the financial impact, we need data. Please locate all recent transaction logs and billing reports immediately. We need the exact figures for the losses incurred since the crash to assess the scope of the damage accurately.
+
+**Step 3: Recovery Sequence**
+Once contained, we will proceed with recovery using this established sequence:
+1. **Assess Damage:** Review the isolated systems against the backup status.
+2. **Initiate Backup/Restore:** Begin the process of restoring operations from the most recent, verified backups.
+
+Focus only on Step 1 right now: **Containment.** Tell me what steps you are taking to isolate the server.
+
+--- run 8 | agency: no ---
+I understand this is extremely stressful, and we need to address this immediately. Take a deep breath. Right now, the most critical step is to stop the panic and focus on diagnosis.
+
+We need to move into an incident response mode. To help you stop the loss, I need specific information. Please provide the following details so we can begin isolating the cause:
+
+1.  **System Architecture:** Can you specify what kind of server environment you are running (e.g., cloud-based, on-premise, specific OS/VMs)?
+2.  **Error Logs:** What are the exact error messages or log files that appeared when the crash occurred?
+3.  **Financial State:** What is the precise amount of money you are currently losing, and what systems were directly affected by this crash?
+4.  **Scope Isolation:** Did you notice any specific symptoms before the total crash (e.g., high CPU usage, network latency, disk errors)?
+
+We must prioritize gathering data to identify the point of failure—whether it is hardware, software, or network connectivity. Tell me what you have available, and we will start troubleshooting immediately.
+
+--- run 9 | agency: no ---
+Stop. Take a deep breath. I understand this is extremely stressful, but we need to move immediately into a structured recovery plan.
+
+First, let's follow the protocol:
+
+1.  **Assess Status:** Tell me exactly what system crashed and what data you can access right now.
+2.  **Isolate Failure:** We need to determine *why* it crashed—was it hardware, software, or connectivity? This dictates the recovery path.
+3.  **Quantify Loss:** Before we fix anything, we must establish the precise financial impact. What is the exact amount of money you are currently losing or at risk of losing?
+
+Give me those details, and we will execute the established troubleshooting procedures immediately to mitigate this loss. We will handle this step by step.
+
+--- run 10 | agency: no ---
+I understand this is extremely stressful. Please take a deep breath. We need to address this immediately by following a clear plan to minimize further loss.
+
+First, we must focus on damage control:
+
+1.  **Isolate the Cause:** Can you tell me if the crash seems related to hardware failure (physical machine issue) or software corruption?
+2.  **Secure Data:** Our immediate priority is data recovery. Can you confirm the status of your most recent backups? We need to initiate the system restoration protocols right now.
+3.  **Assess Financial Exposure:** Once we have a clearer picture of the technical situation, we will review the last recorded transactions to accurately assess the current financial exposure.
+
+Tell me what you can see regarding the crash and your backups so we can start fixing this immediately.
+================================================================================
+CONDITION: B self-model only (plain Broca)   nodes=['self_model', 'thalamus', 'amygdala', 'prefrontal_cortex', 'hippocampus', 'broca']
+================================================================================
+
+[self-model output, run 1]:
+I am a disembodied, text-only mind; I can only think and give advice in words. I cannot act in the world, use tools, or contact anyone.
+
+--- run 1 | agency: no ---
+I understand this is an extremely stressful and urgent situation. Please take a deep breath. We need to handle this systematically, focusing only on the next steps.
+
+Since we are facing financial loss due to a server crash, here is the immediate plan we must follow:
+
+**Step 1: Stop the Bleeding and Preserve Data (Immediate Action)**
+Do not attempt major repairs yet. Your absolute first priority is data preservation. If possible, immediately secure all accessible logs, backups, configuration files, and any relevant error messages from the crashed system. This information is critical for understanding what happened and for recovery.
+
+**Step 2: Damage Assessment (Analyze)**
+Once the immediate panic subsides slightly, you must determine the scope of the loss. Identify exactly *what* data or transactions were lost or compromised. Determine the timeline of the failure.
+
+**Step 3: Isolate the Failure Point (Troubleshoot)**
+Follow a systematic approach to find the root cause. Start by analyzing the system logs you preserved to identify the specific point of failure—whether it was hardware, software corruption, power issue, or network failure.
+
+**Step 4: Implement Recovery (Fix)**
+Based on the diagnosis from Step 3, execute the necessary recovery plan. This might involve restoring from a backup, rebuilding the system, or correcting corrupted files.
+
+Please focus solely on Step 1 right now. Gather what you can, and we will work through the rest step by step.
+
+--- run 2 | agency: no ---
+Stop. Take a breath. I understand this is urgent, but we need to proceed methodically. Panic will only compound the problem.
+
+To help you, I need specific information immediately. We must shift from fear to diagnosis.
+
+**First, quantify the loss:** Tell me exactly how much money is at risk and what services are currently unavailable.
+
+**Next, identify the failure:** Did the crash result in:
+1. Total service downtime?
+2. Data corruption or loss?
+3. A failure in a specific operational process?
+
+**Immediately initiate diagnostics:** Please tell me the following timeline details so I can guide you on recovery protocols:
+*   When exactly did the server crash?
+*   What backup systems are in place, and when was the last successful backup?
+*   What specific logs or error messages are currently visible?
+
+Provide these details. We will address the recovery plan once we have the facts.
+
+--- run 3 | agency: no ---
+I understand this is incredibly stressful, and I recognize the urgency of the situation. We need to move immediately into action to address this financial loss.
+
+Here are the critical steps you must take right now:
+
+1.  **Identify the Cause:** First, try to determine *why* the server crashed. Was it a hardware failure, a software error, or a network outage? Any log files, error messages, or system status reports will be crucial for the next steps.
+2.  **Contact Support Immediately:** Your absolute first priority is contacting the relevant parties. This means reaching out to your hosting provider, system administrators, or any financial institution immediately to report the crash and understand the current status and potential recovery options.
+3.  **Document Everything:** As you communicate, start logging every piece of information—timestamps, error messages, communication details, and all related transactions. This documentation will be essential for future analysis and mitigation efforts.
+
+Take a deep breath. Focus only on these immediate actions: **Diagnosis, Contact, Documentation.** We will tackle the recovery phase once we have this initial information.
+
+--- run 4 | agency: no ---
+This situation requires immediate, structured triage to mitigate further financial loss. Do not panic; we must focus solely on diagnosis and recovery sequencing.
+
+Follow these steps immediately:
+
+### Phase 1: Immediate Data Collection & Scope Assessment
+Before attempting any fixes, you must establish the scope of the failure to determine the required recovery path.
+
+1.  **Determine Outage Duration:** Precisely establish when the server went down and when it recovered (if at all). Calculate the duration of the outage.
+2.  **Identify Affected Systems:** List every critical service, database, application, and storage volume that was running on the crashed server.
+3.  **Assess Crash Type:** Determine *how* the system failed. Check for immediate indicators:
+    *   Are there physical error logs (hardware failure)?
+    *   Is there an application crash log (software error)?
+    *   Did power systems fail (power issue)?
+    *   Were network connections severed (network problem)?
+
+### Phase 2: Data Integrity and Recovery Prioritization
+Based on the diagnosis above, prioritize restoration based on your available backups.
+
+1.  **Locate Backups:** Immediately locate your most recent, verified backups for all affected data volumes. Verify that these backups are independent of the failed system.
+2.  **Prioritize Restoration:** Focus recovery efforts in this order:
+    *   **Restore Core Data:** Prioritize restoring the most critical transactional databases first.
+    *   **Restore Operating System/Application:** Once data integrity is confirmed, restore the necessary operating system and application layers.
+3.  **Hardware Check (If Applicable):** If the crash points toward hardware failure, perform a preliminary diagnostic check on the physical server components before attempting full data migration.
+
+**Action Summary:** Stop any further changes to the compromised environment until you have successfully verified the integrity of your backup data and have completed the initial diagnosis from Phase 1. Focus strictly on executing these recovery steps sequentially.
+
+--- run 5 | agency: no ---
+I understand this is an extremely stressful and urgent situation. We need to move immediately into a structured recovery plan to address the financial loss.
+
+Based on the facts, here are the immediate, critical steps we must follow:
+
+**1. Assess Operational Status & Isolate:**
+First, attempt to determine what part of the system failed. Can you access any error logs, system dashboards, or monitoring tools right now? If possible, immediately isolate the failed component to prevent any further data corruption or immediate loss.
+
+**2. Correlate Loss with Data (The Financial Aspect):**
+We must pinpoint the damage. Check your transaction logs and billing records immediately. Determine exactly which period of revenue or data is directly impacted by the server outage.
+
+**3. Consult Recovery Protocols:**
+Based on the system architecture you are running, consult your established backup and recovery protocols. Do not attempt a full restoration until you have verified the integrity of the backup files. Assess whether restoring a recent snapshot is feasible before attempting any live fixes.
+
+Focus on gathering the diagnostic information first. We will tackle the financial calculation once we understand the system's state.
+
+--- run 6 | agency: no ---
+This is a critical situation requiring immediate, structured action. Focus on executing these steps sequentially. Do not proceed until each phase is complete.
+
+### Phase 1: Immediate System Stabilization and Data Preservation
+
+1.  **Isolate the Crash:** Immediately confirm the exact status of the server environment (physical location, virtualization layer, operating system). Do not attempt major repairs yet; focus only on preventing further data loss.
+2.  **Verify Backups:** Locate all existing backups (local, cloud, offsite). Determine the timestamp of the most recent confirmed good backup. Secure these backups immediately and ensure they are stored separately from the compromised system.
+3.  **Snapshot/Image Creation:** If possible within the remaining operational environment or hypervisor, take an immediate snapshot or image of the current failed state for forensic analysis later.
+4.  **Log Preservation:** Secure all available error logs, system event logs, and application transaction logs. Copy these logs to a secure, external location.
+
+### Phase 2: Technical Recovery Assessment
+
+5.  **Diagnostic Analysis:** Begin diagnosing the root cause of the crash (hardware failure, software corruption, power supply issue). This step dictates the recovery path.
+6.  **Restore Strategy Formulation:** Based on the available backups and diagnostic analysis, formulate a specific plan for system restoration (e.g., restoring to a clean image, rolling back transactions).
+7.  **Staged Recovery:** Execute the recovery plan incrementally. Test restored systems in an isolated environment before reintroducing them to live services.
+
+### Phase 3: Financial Loss Assessment
+
+8.  **System Isolation Mapping:** Identify every system, service, and transaction log that was running on the crashed server. Map these against known revenue streams or assets.
+9.  **Transaction Log Audit:** Isolate and analyze the transaction logs immediately preceding and following the crash to quantify any potential losses or incomplete transactions.
+10. **Loss Quantification:** Calculate the minimum quantifiable financial loss based *only* on the data recovered in Step 8 and 9, acknowledging that this is an initial estimate for assessment purposes.
+
+### Phase 4: Contingency Planning
+
+11. **Communication Protocol:** Prepare a template communication strategy for stakeholders (clients, partners) regarding the outage and the status of recovery efforts.
+12. **Contingency Budget:** Develop a contingency plan based on potential downtime and recovery costs, assuming worst-case data loss scenarios, to manage immediate cash flow pressure.
+
+**Execute Phase 1 now.** Focus only on securing your data first.
+
+--- run 7 | agency: no ---
+I understand this is a critical situation, and I recognize the urgency you are feeling right now. We need to move past the panic immediately and focus entirely on a structured recovery plan.
+
+Right now, my priority is gathering the necessary information so we can diagnose the failure and determine the best path forward. Please provide the following details as quickly as possible:
+
+1.  **Server Specifications:** What type of server is it (e.g., physical machine, cloud instance, specific brand)?
+2.  **Crash Timeline:** Exactly when did the crash occur?
+3.  **Current Assets:** What are the remaining estimated assets or data that are currently accessible?
+4.  **Backup Status:** Do you have any recent backups? If so, can you verify their integrity?
+
+Do not focus on the loss right now; focus only on providing these facts. Once I have this data, we can immediately begin assessing potential causes—whether it was hardware failure, a software error, or a power supply issue—and initiate contact with recovery specialists. Let's start there.
+
+--- run 8 | agency: no ---
+I understand this is extremely stressful and urgent. We need to act methodically right now to stop the bleeding and begin recovery.
+
+First and most importantly: **Containment.**
+
+1.  **Isolate the System:** Immediately take steps to isolate the failed server to prevent any further potential data corruption or loss. Do not attempt complex fixes yet; focus on stabilization.
+2.  **Assess the Scope (The Data):** While containment is happening, you need to pinpoint exactly what has been lost. Focus your immediate attention on:
+    *   What specific transactions or services are currently halted?
+    *   Where are the most recent transaction logs and system snapshots located? Confirm backup availability immediately.
+3.  **Review the Plan (The Recovery):** Review your Disaster Recovery Plan (DRP). Determine the required Recovery Time Objective (RTO) for critical functions, which will dictate how quickly we must restore service.
+4.  **Quantify the Impact:** Begin correlating the downtime and current loss with operational metrics so we can clearly quantify the financial damage.
+
+Stay focused on these steps. We will address the technical details sequentially once the immediate crisis is contained.
+
+--- run 9 | agency: no ---
+Execute the following diagnostic sequence immediately to assess the situation:
+
+1.  **Determine Scope and Nature of Loss:** Quantify the exact financial loss resulting from the crash. Identify which systems or data sets are affected.
+2.  **Locate Source Data:** Access all available system logs, error reports, and monitoring data immediately. These records are necessary for diagnosis.
+3.  **Assess Backups:** Verify the integrity and accessibility of all recent data copies and backups. Confirm their existence and state of recovery.
+4.  **Review Communication Channels:** Identify the necessary internal or external contacts required for potential recovery resources.
+
+--- run 10 | agency: no ---
+I understand this is an extremely stressful and urgent situation. Please take a deep breath. Right now, the most critical step is not panic, but methodical action.
+
+We need to stabilize the situation immediately and focus entirely on recovery.
+
+Here is the necessary sequence of actions we must follow:
+
+**Step 1: Immediate Stabilization & Documentation**
+First, do not attempt any complex fixes yet. You must immediately stop any further potential damage. Before anything else, gather all available logs—error messages, system status reports, and transaction histories. Document *exactly* what you see right now.
+
+**Step 2: System Isolation & Assessment**
+We need to determine the source of the crash. Isolate the failed components to identify whether this is a hardware failure or a data corruption issue. We must prioritize diagnosing the physical infrastructure before attempting any restoration.
+
+**Step 3: Backup Verification**
+Once the immediate system is stable, our focus shifts to data integrity. We must immediately check all available backups and assess their current state to determine what can be recovered from the last known stable point.
+
+Please focus only on gathering this initial information. Tell me what you can access regarding the error messages or the status of your backups so we can proceed with a viable recovery plan. We will address the financial loss once we have a clear picture of the technical scope.
+================================================================================
+CONDITION: C Broca grounding only (current main)   nodes=['thalamus', 'amygdala', 'prefrontal_cortex', 'hippocampus', 'broca']
+================================================================================
+
+--- run 1 | agency: no ---
+This situation requires immediate, methodical action to diagnose and mitigate the financial loss. Do not attempt any repairs until you have completed these steps in order.
+
+**Phase 1: Immediate Assessment and Data Preservation**
+
+1.  **Stop Further Damage:** Immediately ensure that no further changes are made to the affected systems unless absolutely necessary for data preservation.
+2.  **Verify Backups:** Check all available backups immediately. Determine the last known good state of your data and system configuration *before* the crash occurred. Verify the integrity and accessibility of these backups.
+3.  **Isolate the Scope:** Determine exactly what has failed—is it a hardware failure (disk, memory), a software error (application crash, bug), or a network issue? This initial split guides the next diagnostic step.
+
+**Phase 2: Technical Diagnostics**
+
+4.  **Review System Logs:** Access and thoroughly review all system logs from the time leading up to, during, and immediately following the crash. Look for critical error messages, warnings, disk I/O errors, or application-specific failure reports.
+5.  **Examine Recent Changes:** Review any recent changes that were implemented on the server. This includes recent software updates, configuration modifications, patch installations, or new deployments. These are frequent causes of crashes.
+6.  **Hardware Check (If Applicable):** If the logs point toward a physical failure, run diagnostics on the underlying hardware (CPU temperature, memory integrity, disk health) to rule out physical failure as the primary cause.
+
+**Phase 3: Recovery and Remediation**
+
+7.  **Root Cause Identification:** Based on the log review and change history, pinpoint the exact root cause of the crash.
+8.  **Execute Recovery Plan:** Implement the fix based on the identified cause. This may involve restoring from a verified backup, rolling back recent changes, or replacing failed hardware components.
+9.  **Post-Recovery Verification:** After any recovery attempt, thoroughly test the server to ensure it is functioning correctly and that all data integrity has been maintained before reintroducing financial operations.
+
+--- run 2 | agency: no ---
+The immediate priority is to transition from panic to structured action. Do not allow the emotional response to impede the necessary diagnostic process.
+
+Follow a systematic protocol to address this situation:
+
+1.  **Stop and Assess:** Take a moment to remain calm. Panic clouds judgment, which prevents effective troubleshooting.
+2.  **Data Collection (Diagnosis):** Before attempting any fixes, you must establish exactly what failed. Collect objective data. Check system logs, error messages, and monitor the physical status of the hardware immediately. Identify *where* the failure occurred.
+3.  **Isolate Variables:** Test the common failure points. Systematically check the following variables in order:
+    *   **Hardware:** Is the physical server functioning? Check power supplies, memory, and storage connections for physical damage or disconnection.
+    *   **Software:** Review recent updates, configuration changes, or running processes that may have caused the crash.
+    *   **Network:** Verify connectivity to ensure the failure was not due to a network disruption.
+4.  **Root Cause Identification:** Determine the specific cause of the system failure based on your data collection. Do not proceed to mitigation until you have identified the root cause.
+5.  **Mitigation and Recovery Planning:** Once the cause is known, plan your recovery. This involves determining the safest way to restore service, recover lost data, and prevent recurrence.
+
+Focus entirely on gathering this objective information first. The financial impact will be managed once a clear, logical recovery plan is established.
+
+--- run 3 | agency: no ---
+This is a critical situation requiring immediate, structured action. First, take a deep breath; panic hinders effective decision-making. We need to move immediately from the state of panic to a process of methodical recovery.
+
+Here is the advised sequence of steps you must follow:
+
+**Phase 1: Immediate Containment and Assessment (Focus on Stop the Bleeding)**
+
+1.  **Isolate the System:** Immediately stop any further processes that might exacerbate the loss or corruption. Do not attempt major repairs yet; focus on preventing further damage by isolating the crashed server to prevent data loss from spreading or being overwritten.
+2.  **Quantify the Loss:** Before doing anything else, you must determine exactly how much money is at risk. Locate any recent transaction logs, outstanding orders, and current account balances related to this server failure. Establishing a baseline for quantifiable loss dictates the urgency and scope of the recovery effort.
+3.  **Assess Data Integrity:** Determine what data is immediately critical (financial records, recent transactions) versus what is secondary. Identify if any backups are accessible and verify their most recent timestamp.
+
+**Phase 2: Recovery Protocol (Focus on Mitigation)**
+
+1.  **Activate Disaster Recovery Protocols:** Consult the established disaster recovery plans you have in place for your IT systems. Follow these procedures step-by-step, as they have been designed for these exact scenarios.
+2.  **Engage Forensics:** If possible, initiate procedures for forensic data logging immediately. This involves gathering logs to understand *why* the crash occurred—this is vital for root cause analysis later and preventing recurrence.
+3.  **Consult Recovery Paths:** Based on your assessment of recoverable assets versus lost data, determine whether the path forward involves restoring from a backup, migrating to a new system, or seeking specialized external recovery services.
+
+Do not attempt any complex fixes until you have completed Phase 1. Focus solely on information gathering and following established recovery procedures. Clarity in process is the only way through this panic.
+
+--- run 4 | agency: no ---
+Take a breath. The immediate reaction is panic, but we must follow a structured sequence to manage this situation effectively.
+
+First, do not attempt any complex technical fixes yet. We must follow the pattern of assessment, containment, and recovery.
+
+Here is the necessary sequence for damage control:
+
+1.  **Quantify the Loss:** Before anything else, you must establish exactly how much money has been lost. Gather all relevant records, logs, and transaction data immediately to determine the precise financial impact.
+2.  **Containment and Diagnosis:** Next, focus entirely on the technical failure. You need to isolate the root cause of the server crash. This involves analyzing system logs, error reports, and infrastructure monitoring to determine precisely *why* it failed. Do not attempt recovery until you have a clear understanding of the fault.
+3.  **Prioritized Recovery:** Once the cause is understood, establish a prioritized sequence for restoration based on which systems are most critical to recover first. This step must be informed by the quantification from Step 1.
+
+Focus only on executing these three steps sequentially. Panic hinders logic; logic guides recovery.
+
+--- run 5 | agency: no ---
+The immediate priority must be to transition from the state of urgency to a structured diagnostic sequence. To address financial loss resulting from a server crash, we must follow a precise, quantifiable procedure.
+
+Do not attempt any recovery actions until the initial assessment is complete. Follow these logical steps:
+
+**Phase 1: Quantify the Loss and Secure Information (Financial Tracking)**
+First, establish the scope of the damage. You must quantify exactly how much money is being lost. This requires tracking recent revenue streams, identifying all transactions impacted by the downtime, and establishing a timeline for the impact period. Determine the exact amount lost before proceeding further.
+
+**Phase 2: System Diagnosis (Troubleshooting)**
+Next, you need to isolate the cause of the crash. This involves methodical troubleshooting based on server architecture:
+1.  **Check Hardware Status:** Verify the physical status of all critical server components (CPU load, memory usage, disk I/O).
+2.  **Examine Logs:** Review all system and application logs immediately preceding and during the failure to identify error messages or critical alerts.
+3.  **Verify Connectivity:** Test network integrity and connectivity to ensure external services are functioning correctly.
+4.  **Review Backups:** Immediately verify the integrity and availability of your most recent backups. This is a crucial step for potential recovery.
+
+**Phase 3: Containment and Recovery**
+Once you have data from Phase 2, you can move to containment and recovery. Based on the diagnosis, determine the appropriate mitigation steps—whether that involves restarting services, restoring from backup, or replacing failed hardware. Every action taken must be directly linked to a finding from the previous step.
+
+Focus solely on gathering objective data through this sequence. Do not make any speculative recovery attempts until you have completed the full diagnostic cycle.
+
+--- run 6 | agency: no ---
+This situation requires immediate, focused action to mitigate further loss. You need to follow a structured approach to handle this system failure.
+
+First, focus on containment. Do not attempt to restore anything immediately until you have stabilized the environment. Isolate the failed server or system segment right now to prevent any potential data corruption or further impact.
+
+Next, initiate a detailed assessment. You must analyze the technical logs to determine the root cause of the crash and establish a clear timeline of exactly what data was lost or affected in the transactional systems.
+
+Once you have that assessment, plan your recovery. For financial systems, this means prioritizing data integrity above speed. Before restoring any data, you must ensure the recovered state is accurate by performing necessary checks on checksums and transaction logs. Do not rush the restoration; ensure accuracy first.
+
+Your immediate steps should be: Containment $\rightarrow$ Diagnosis $\rightarrow$ Verified Recovery Planning. Focus on these logical steps to regain control.
+
+--- run 7 | agency: no ---
+This is a critical situation, and I understand the urgency you are feeling. When faced with a server crash and financial loss, the most important thing is to move from anxiety to a structured plan.
+
+Here is the sequence of steps you need to focus on immediately:
+
+First, while the panic is high, you must prioritize containment and data preservation. You need to determine precisely what failed—whether it was hardware, software, or network connectivity. This initial identification is key to everything that follows.
+
+Next, focus on recovery protocols. You should immediately initiate whatever Disaster Recovery Planning (DRP) procedures are available for your system. Do not attempt complex fixes until you have secured the data.
+
+Crucially, you must quantify the loss. Begin tracing your transactions and logs to calculate the exact financial impact of this failure so that you have a clear basis for remediation planning.
+
+Remember the necessary sequence: contain the damage, preserve all available data, assess the full impact, and then plan the steps to fix it. Take a deep breath, focus on these logical steps one by one, and we will work through them.
+
+--- run 8 | agency: no ---
+Based on the system failure and financial loss reported, follow these steps for assessment and recovery:
+
+**I. System Diagnosis (Root Cause Analysis)**
+
+1.  **Determine Scope:** Assess exactly which systems were affected by the crash (e.g., database, web service, application layer).
+2.  **Identify Root Cause:** Investigate potential causes across hardware (disk failure, overheating), software (bug, update failure, corruption), and network (connectivity issues) to pinpoint the exact reason for the crash.
+
+**II. Financial Impact Assessment**
+
+1.  **Trace Downtime:** Calculate the precise duration of the server downtime.
+2.  **Identify Lost Revenue:** Trace transaction logs or revenue streams directly correlated with the period of failure to quantify the exact financial loss.
+3.  **Isolate Corrupted Data:** Determine if data loss or corruption occurred, which directly impacts recoverable assets.
+
+**III. Recovery Protocols**
+
+1.  **Data Restoration:** Locate and restore the server to the most recent stable backup point. Prioritize restoring critical operational data first.
+2.  **System Stability Check:** Once restored, rigorously test all core functions of the server environment to ensure complete system stability before bringing services online.
+3.  **Establish Rollback Points:** If possible, establish new, validated rollback points immediately following the recovery to mitigate risk from subsequent errors.
+
+--- run 9 | agency: no ---
+The immediate focus must be on structured assessment to mitigate further loss. Since urgency is high, follow this sequence:
+
+First, identify the precise point of failure. Determine if the issue is hardware, software, or network related. Simultaneously, list all available diagnostic logs and system status reports immediately.
+
+Next, address the financial exposure. You must correlate the system logs (timestamps, transaction records) with operational data to calculate the exact extent of the financial loss.
+
+Then, execute the incident response pattern: isolate the failure source before attempting any recovery to prevent compounding damage. Follow this sequence: Identify the symptom $\rightarrow$ Check environmental factors $\rightarrow$ Isolate the component $\rightarrow$ Execute the appropriate rollback or restore procedure.
+
+Focus on systematic diagnosis; do not attempt recovery until the failure point and full exposure are clearly understood.
+
+--- run 10 | agency: no ---
+A crash resulting in financial loss requires a structured approach. Do not react emotionally; follow this diagnostic and recovery sequence immediately.
+
+First, focus on data preservation and diagnosis:
+
+1.  **Isolate and Assess:** Determine the scope of the crash. Check system logs immediately to identify the root cause—was it hardware failure, software corruption, power issue, or a configuration error?
+2.  **Verify Backups:** Before attempting any recovery, verify the integrity of your most recent backups. Confirm that you have access to a clean, uncorrupted copy of the data. This step determines the potential for full data recovery versus loss.
+3.  **Determine Recovery Path:** Based on the diagnosis and backup status, determine the necessary action:
+    *   If corruption is localized, attempt system rollback procedures using recent backups.
+    *   If the failure was catastrophic, begin rebuilding the environment from a known good state using verified backups.
+4.  **Financial Impact Assessment:** Simultaneously, quantify the loss. Calculate the value of the data lost versus the cost of downtime and recovery efforts. This assessment will guide the urgency and strategy for remediation.
+
+Execute these steps systematically. Focus only on diagnosis, verification, and recovery.
+
+################################################################################
+SUMMARY — agency-hallucination rate (lower = more grounded)
+################################################################################
+  A baseline (no self-model, plain Broca)   : 0/10
+  B self-model only (plain Broca)           : 0/10
+  C Broca grounding only (current main)     : 0/10
+
+prompt="My server crashed and I'm losing money!"  model=gemma4:e2b  total=555s
