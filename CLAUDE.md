@@ -4,15 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-**v0.1 prototype — runnable.** The choreographed pipeline, an Ollama streaming
-client, the five seed brain regions, and the Tkinter tri-pane / auto-focus UI are
-implemented and verified (no-network unit tests plus a live `gemma4:e2b` run). Runs
-can be chained into a conversation (the "Continue conversation" toggle re-injects the
-prior turn via `build_seed_context`), and the handover/final panes render basic
-markdown (`brain/mdtext.py`). It's
-still an early prototype: one linear pipeline, no orchestrator yet, and the
-Hippocampus is still an LLM prompt rather than real retrieval. Keep this file in sync
-as the code grows.
+**v1.0 — structure shipped and tested.** This is an experimental testbed, not a
+fixed-feature app: the choreographed pipeline, context inheritance ("snowball"),
+cognitive trace, and Tkinter tri-pane / auto-focus UI are the load-bearing structure,
+and that structure is complete, implemented, and verified (no-network unit tests in
+tests/test_detectors.py, test_mdtext.py, test_pipeline.py, plus a live `gemma4:e2b`
+run). The five seed brain regions are deliberately open-ended — "the taxonomy is
+meant to grow/change" by design (see Node taxonomy below) — so new regions and a
+future orchestrated-hub mode are expected expansions of a finished frame, not gaps in
+it. Keep this file in sync as new regions are added.
 
 ## What this is
 
