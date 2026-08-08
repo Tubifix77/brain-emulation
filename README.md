@@ -9,9 +9,10 @@ a human-like conclusion.
 You don't just get the answer. You get to *watch the thought happen*, region by region,
 and see exactly how it was built.
 
-> **Status: early development.** 🚧 This is a fresh project — the design is set but the
-> code is still being built, so it isn't runnable yet. The sections below describe how
-> it's meant to work and how you'll use it. Star/watch the repo to follow along.
+> **Status: v1.0 - structure shipped and tested.** The choreographed pipeline, context
+> inheritance, cognitive trace, and Tkinter UI are built and verified (see CLAUDE.md for
+> detail). This banner was stale - last touched before the pipeline existed. The seed
+> brain regions are meant to keep growing; the structure itself is done.
 
 ---
 
